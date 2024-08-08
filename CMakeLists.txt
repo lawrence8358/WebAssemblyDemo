@@ -28,20 +28,6 @@ message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 set(ncnn_DIR "~/Project/Lib/ncnn-20240410-webassembly/${WASM_FEATURE}/lib/cmake/ncnn")
 find_package(ncnn REQUIRED)
 
-# # 設定 C 編譯器的旗標，以配置 WebAssembly 特定的設定。
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s FORCE_FILESYSTEM=1 -s INITIAL_MEMORY=256MB -s EXIT_RUNTIME=1")
-
-# # 設定 C++ 編譯器的旗標，以配置 WebAssembly 特定的設定。
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s FORCE_FILESYSTEM=1 -s INITIAL_MEMORY=256MB -s EXIT_RUNTIME=1")
-
-# # 設定 WebAssembly 建置的鏈結旗標。
-# set(CMAKE_EXECUTBLE_LINKER_FLAGS "${CMAKE_EXECUTBLE_LINKER_FLAGS} -s FORCE_FILESYSTEM=1 -s INITIAL_MEMORY=256MB -s EXIT_RUNTIME=1")
-
-# # 新增額外的旗標以匯出特定函式，並將資產預加載到 WebAssembly 檔案系統中
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -sEXPORTED_FUNCTIONS=['_main','_malloc','_free'] --preload-file ${CMAKE_CURRENT_SOURCE_DIR}/assets@.")
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -sEXPORTED_FUNCTIONS=['_main','_malloc','_free'] --preload-file ${CMAKE_CURRENT_SOURCE_DIR}/assets@.")
-# set(CMAKE_EXECUTBLE_LINKER_FLAGS "${CMAKE_EXECUTBLE_LINKER_FLAGS} -sEXPORTED_FUNCTIONS=['_main','_malloc','_free'] --preload-file ${CMAKE_CURRENT_SOURCE_DIR}/assets@.")
-
 # 增加需要編譯的 C++ 檔案
 add_executable(${PROJECT_NAME} main.cpp)
 
