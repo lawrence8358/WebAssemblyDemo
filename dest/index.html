@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Emscripten WebAssembly Demo</title>
+</head>
+
+<body>
+  <h1>Emscripten WebAssembly Demo</h1>
+  <fieldset>
+    <legend>呼叫存在的 add Method</legend>
+    <input type="input" id="input_a" value="1">
+    <input type="input" id="input_b" value="2">
+    <button onclick="add()">兩數相加</button>
+  </fieldset><br><br>
+  <fieldset>
+    <legend>呼叫不存在的 helloword Method</legend>
+    <button onclick="helloword()">呼叫不存在的 Method</button>
+  </fieldset>
+  <script>
+    var _isComplete = false;
+    Module = {
+      'noInitialRun': true
+    };
+
+    // WebAssembly 載入完畢後會呼叫這個函式
+    Module.onRuntimeInitialized = function () {
+      _isComplete = true;
+      Module._main();
+    }
+
+    function add() {
+
+      if (!IsComplete()) return;
+
+      var a = parseInt(document.getElementById('input_a').value);
+      var b = parseInt(document.getElementById('input_b').value);
+      var result = Module._add(a, b);
+      alert('加法結果: ' + result);
+    }
+
+    function helloword() {
+      if (!IsComplete()) return;
+
+      try {
+        Module._helloword();
+      }
+      catch (e) {
+        alert(e);
+      }
+    }
+
+    function IsComplete() {
+      if (!_isComplete)
+        alert('WebAssembly 模組尚未載入完畢，請稍後再試');
+      return _isComplete;
+    }
+  </script>
+  <script src="wasm-demo-simd.js"></script>
+</body>
+
+</html>
