@@ -41,7 +41,7 @@ Demo 站台 https://lawrence8358.github.io/WebAssemblyDemo/
 
 ---
 ### 文章連結
-
+[[開發環境紀錄] 使用 NCNN + OpenCV 建置 WebAssembly](https://lawrencetech.blogspot.com/2024/08/ncnn-opencv-webassembly.html)
 
 ---
 ### License
